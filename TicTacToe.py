@@ -39,34 +39,43 @@ for turnCount in range(1, 10):
     
     # ODD TURNS = X
     if(turnCount % 2 == 1):
+        # initialize this so the next loop can run
         x = 0
+
+        # go until input is 1-9
         while x not in range (1, 10):
+
+            # get input
             x = int(input("Player X, where would you like to go: "))
+
+            # if it's too small or too big, let user know, wait for them to press something, and print the board
             if ((x < 1) or (x > 9)):
                 print("\nSorry, that isn't a valid integer.  Please use 1-9.")
-                print("Please try again")
+                print("Please try again\n")
                 msvcrt.getch()
-                printBoard()
-                x = 0
+
+            # or if someone's already played in that spot, let user know etc
             if board[x] != ' ':
                 print("\nSorry, that space is already occupied by a '" + board[x] + "'")
                 print("Please try again")
                 msvcrt.getch()
                 printBoard()
+                # x needs to be outside of 1-9 range so the loop will run
                 x = 0
+        
+        # input is good and valid and not taken 
         board[x] = 'X'
     
-    # EVEN TURNS = O
+    # EVEN TURNS = O, copy pasted from above if and replaced xs with os
     elif(turnCount % 2 == 0):
         o = 0
         while o not in range (1, 10):
             o = int(input("Player O, where would you like to go: "))
             if ((o < 1) or (o > 9)):
                 print("\nSorry, that isn't a valid integer.  Please use 1-9.")
-                print("Please try again")
+                print("Please try again\n")
                 msvcrt.getch()
-                printBoard()
-                o = 0
+            
             if board[o] != ' ':
                 print("\nSorry, that space is already occupied by a '" + board[o] + "'")
                 print("Please try again")
